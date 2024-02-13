@@ -1,13 +1,13 @@
+
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'reviews/style.css' %}">
-</head>
-<body>
+{% block title %}
+Reviews
+{% endblock %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'reviews/style.css' %}">
+{% endblock %}
+{% block content %}
     <form action="/" method="POST" >
     {% csrf_token %}
     {% for field in form %}
@@ -20,5 +20,5 @@
     
     <button>Send</button>
 </form>
-</body>
+{% endblock %}
 </html>
