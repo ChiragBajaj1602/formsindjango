@@ -6,7 +6,8 @@ from . import forms
 from .models import Review
 from django.views import View
 from django.views.generic.base import TemplateView
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
+from django.views.generic.edit import FormView,CreateView,UpdateView,DeleteView
 # Create your views here.
 class reviewView(View):
     def get(slef,request):
@@ -55,5 +56,23 @@ class AllReviews(ListView):
     context_object_name="reviews"
     def get_queryset(self):
         base_query=super().get_queryset()
-        data=base_query.filter(rating__gt=1)
+        data=base_query.filter(rating__gt=0)
         return data
+class DetailViewsReviews(DetailView):
+    template_name='reviews/singlereview.html'
+    model=Review
+
+class Formsubmission(FormView):
+    form_class=forms.Reviewdb
+    template_name='reviews/index.html'
+    success_url='/ThankYou'
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    
+class Formsubmission1(CreateView):
+    model=Review
+    form_class=forms.Reviewdb
+    template_name='reviews/index.html'
+    success_url='/ThankYou'
+

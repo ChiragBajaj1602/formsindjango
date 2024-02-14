@@ -7,3 +7,5 @@ class Review(models.Model):
     rating=models.IntegerField()
     def __str__(self):
         return f'{self.user_name} {self.review_text}'
+    def returnpk(self):
+        return self.pk

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %}
-Review of Id {{reviews.id}}
+Review of Id {{object.id}}
 {% endblock  %}
 {% block  content%}
-<h1>The Author of the rveiew is {{reviews.user_name}}</h1>
-<h1>The rating of the review is {{reviews.rating}} </h1>
-<h1>The Feedback provided by the user was "{{reviews.review_text}}"</h1>
+<h1>The Author of the review is {{object.user_name}}</h1>
+<h1>The rating of the review is {{object.rating}} </h1>
+<h1>The Feedback provided by the user was "{{object.review_text}}"</h1>
 {% endblock %}
