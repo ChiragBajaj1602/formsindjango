@@ -20,5 +20,8 @@ class Reviewdb(forms.ModelForm):
             "user_name":{
                 "required":"Your username can't be empty",
                 "max_length":"Don't write such long usernames"
+            },
+            "rating":{
+                "max_value":"The rating can't be greater than 5"
             }
         }

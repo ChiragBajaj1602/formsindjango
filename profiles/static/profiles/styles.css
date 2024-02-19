@@ -26,3 +26,8 @@ button:active {
   background-color: #830443;
   border-color: #830443;
 }
+.errorlist{
+  list-style: none;
+  color:rgb(89,67,135);
+  font-family: 'Courier New', Courier, monospace;
+}
