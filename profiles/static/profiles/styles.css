@@ -31,3 +31,7 @@ button:active {
   color:rgb(89,67,135);
   font-family: 'Courier New', Courier, monospace;
 }
+img {
+  width:800px;
+  height: 800px;
+}
