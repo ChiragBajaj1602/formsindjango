@@ -26,8 +26,6 @@ class createProfileView(View):
             profile=userprofile(image=request.FILES['user_image'])
             profile.save()
             return HttpResponseRedirect('/profile')
-        else:
-            print("The form is invalidated")
         return render(request,'profiles/create_profile.html',{
             "form":submitted_form
         })
