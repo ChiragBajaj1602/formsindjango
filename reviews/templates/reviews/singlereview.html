@@ -1,9 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}
 Review of Id {{object.id}}
 {% endblock  %}
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'reviews/style.css' %}">
+{% endblock %}
 {% block  content%}
 <h1>The Author of the review is {{object.user_name}}</h1>
 <h1>The rating of the review is {{object.rating}} </h1>
 <h1>The Feedback provided by the user was "{{object.review_text}}"</h1>
+
+
+<form action="/reviews/favourite" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="review_id" value="{{object.id}}">
+    <button>favourite</button>
+</form>
+{% if is_favourite %}
+<p>This Review is not my favourite</p>
+{% endif %}
+
 {% endblock %}

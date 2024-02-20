@@ -61,6 +61,14 @@ class AllReviews(ListView):
 class DetailViewsReviews(DetailView):
     template_name='reviews/singlereview.html'
     model=Review
+    def get_context_data(self, **kwargs):
+        context= super().get_context_data(**kwargs)
+        loaded_review=self.object
+        request=self.request
+        favourite_id=request.session.get('favourite_review')
+        context['is_favourite']=favourite_id==str(loaded_review.id)
+        return context
+
 
 class Formsubmission(FormView):
     form_class=forms.Reviewdb
@@ -76,3 +84,8 @@ class Formsubmission1(CreateView):
     template_name='reviews/index.html'
     success_url='/ThankYou'
 
+class AddFavouriteStar(View):
+    def post(self,request):
+        review_id=request.POST['review_id']
+        request.session['favourite_review']=review_id
+        return HttpResponseRedirect('/reviews/'+review_id)
